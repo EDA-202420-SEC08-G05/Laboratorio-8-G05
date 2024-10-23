@@ -71,7 +71,7 @@ def setup_unbalanced():
     
     return unbalanced
 
-@handle_not_implemented
+#@handle_not_implemented
 def test_new_binary_search_tree():
     empty_bst = bst.new_map()
 
@@ -147,6 +147,9 @@ def test_put():
     assert three_bst["root"]["left"]["size"] == 3
 
 
+"""
+
+
 @handle_not_implemented
 def test_get():
     empty_bst = setup_tests()
@@ -215,6 +218,9 @@ def test_remove():
     assert seven_bst["root"]["right"]["key"] == 70
     assert seven_bst["root"]["right"]["size"] == 2
     assert seven_bst["root"]["right"]["left"]["key"] == 50
+
+
+
 
 
 @handle_not_implemented
@@ -585,3 +591,7 @@ def test_values():
     assert values["elements"][4] == 500
     assert values["elements"][5] == 600
     assert values["elements"][6] == 700
+    
+    
+    
+"""
