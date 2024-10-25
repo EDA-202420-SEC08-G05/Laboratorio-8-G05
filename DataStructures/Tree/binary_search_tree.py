@@ -20,53 +20,23 @@ def insert_node(root, key, value):
     """
     Ingresa una pareja llave,valor. Si la llave ya existe, se reemplaza el valor.
     """
-    #if root is not None:
-        
-    #if root["key"] is not None:
-    if root is None:
-        root_new = bst_node.new_node(key, value)
-           
-                
-        #root_new["key"] = key
-        #root_new["value"] = value  
-                
-        return root_new      
-    
-    else:
-              
-            if root["key"] == key:
-                    
-                    #root["key"] = key
-                    root["value"] = value
-                
-            else:
-                    
-                    root["key"] = key
-                    root["value"] = value  
-                
-            return root            
+    root["key"] = key
+    root["value"] = value
+    root["size"] += 1   
 
 
 
 
 def put(my_bst, key, value):
-    
-    if my_bst["root"] is None:
-        my_bst["root"] = insert_node(my_bst["root"],key,value)  
+    raiz = my_bst["root"]
+    if raiz["value"] is None:
+        insert_node(key, value) 
+    if key < raiz["key"]:
+        put(raiz["izquierda"])
+    if key > raiz["key"]:
+        put(raiz["derecha"])        
         
-    elif my_bst["root"]["key"] == key :
-        my_bst["root"]["value"] = value
-        
-    elif my_bst["root"]["value"] > value and my_bst["root"]["left"]== None:
-        root_new = bst_node.new_node(key, value)
-        my_bst["root"]["left"] = insert_node(root_new,key,value)    
-        
-        
-    elif my_bst["root"]["value"] < value  and my_bst["root"]["right"]== None:
-        root_new = bst_node.new_node(key, value)
-        my_bst["root"]["right"] = insert_node(root_new,key,value)
-    
-    return my_bst
+    return my_bst   
 
 
 
@@ -76,7 +46,8 @@ def remove_node(root, key):
 
     Es usada en la función remove()
     """
-    
+    root["key"] = "__EMPTY__"
+    root["value"] = None   
     
     
     
@@ -89,8 +60,13 @@ def remove(my_bst, key):
 
     Usa la función remove_node() para eliminar la pareja
     """
-    
-    
+    raiz = my_bst["root"]
+    if raiz["key"] == key: 
+        remove_node(raiz)
+    if raiz["key"] < key:
+        remove(raiz["derecha"],key)
+    if raiz["key"] > key:
+        remove(raiz["izquierda"],key)
     
     
 
